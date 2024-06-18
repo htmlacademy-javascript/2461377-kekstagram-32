@@ -1,7 +1,8 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Дмитрий Карпачев](https://up.htmlacademy.ru/javascript/32/user/2461377).
-* Наставник: `Неизвестно`.
+* Наставник: [Михаил Карямин](https://htmlacademy.ru/profile/id959581).
+* Личный проект: [«Кекстаграм»](https://drzhuker.github.io/2461377-kekstagram-32/).
 
 ---
 
