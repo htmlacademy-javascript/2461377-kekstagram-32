@@ -1,17 +1,17 @@
 // Функция для проверки длины строки.
 
-function checkLenght(str, maxLength) {
-  return str <= maxLength;
+function checkLength(str, maxLength) {
+  return str.length <= maxLength;
 }
 
-checkLenght('Привет!', 22);
+checkLength('Привет!', 5);
 
 //Функция для проверки, является ли строка палиндромом.
 
 function checkPalindrome(str) {
-  const newStr = str.replaceALL(' ', '').toUpperCase;
+  const newStr = str.replaceAll(' ', '').toUpperCase();
   let rts = '';
-  for (let i = newStr.lenght; i >= 0; i--) {
+  for (let i = newStr.length - 1; i >= 0; i--) {
     rts += newStr[i];
   }
   return rts === newStr;
