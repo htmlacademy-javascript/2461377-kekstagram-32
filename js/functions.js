@@ -18,3 +18,23 @@ function checkPalindrome(str) {
 }
 
 checkPalindrome('Патап');
+
+
+//Функция для проверки, является ли строка палиндромом с длинной строкой.
+
+function checkBigPalindrome(input) {
+  const newString = input.replaceAll(' ', '').toUpperCase();
+  let reverse = '';
+  let j = newString.length - 1;
+  for (let i = 0; i <= newString.length - 1; i++) {
+    if (newString[i] === newString[j]) {
+      reverse += newString[j];
+      j--;
+    } else {
+      break;
+    }
+  }
+  return reverse === newString;
+}
+
+checkBigPalindrome('dfdf');
