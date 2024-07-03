@@ -123,4 +123,5 @@ function createDescriptionPhoto() {
 
 const photoMain = Array.from({ length: MAIN_ARRAY_LENGTH }, createDescriptionPhoto);
 
+// eslint-disable-next-line no-console
 console.log(photoMain);
