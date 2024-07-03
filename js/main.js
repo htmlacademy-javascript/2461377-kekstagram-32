@@ -120,4 +120,7 @@ function createDescriptionPhoto() {
   };
 }
 
-createDescriptionPhoto();
+
+const photoMain = Array.from({ length: MAIN_ARRAY_LENGTH }, createDescriptionPhoto);
+
+console.log(photoMain);
