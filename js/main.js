@@ -1,12 +1,8 @@
-// id, число — идентификатор опубликованной фотографии. Это число от 1 до 25.
-// Идентификаторы не должны повторяться.
-const id;
-// url, строка — адрес картинки вида , где {{i}} — это
-//  число от 1 до 25. Адреса картинок не должны повторяться.
-const url;
-// description, строка — описание фотографии. Описание придумайте
-//  самостоятельно.
-const description = [
+const MAIN_ARRAY_LENGTH = 25;
+
+const AVATAR_URL = 6;
+
+const DESCRIPTIONS = [
   'Красивый отель на берегу',
   'Указатель к пляжу',
   'Лазурный прибой',
@@ -30,33 +26,11 @@ const description = [
   'Салат на завтрак',
   'Яркий закат',
   'Мистер Крабс',
-  'Linkin Park',
+  'Громкий концерт',
   'Трофи в джунглях',
 ];
-// likes, число — количество лайков, поставленных фотографии.
-// Случайное число от 15 до 200.
-const likes;
-// comments, массив объектов — список комментариев, оставленных другими
-//  пользователями к этой фотографии. Количество комментариев к
-// каждой фотографии — случайное число от 0 до 30.
-// Все комментарии генерируются случайным образом.
-// {
-//   id: 135,
-//   avatar: 'img/avatar-6.svg',
-//   message: 'В целом всё неплохо. Но не всё.',
-//   name: 'Артём',
-// }
-// У каждого комментария есть идентификатор — id — любое число.
-//  Идентификаторы не должны повторяться.
-const comments;
-// Поле avatar — это строка, значение которой формируется
-//  по правилу img/avatar-{{случайное число от 1 до 6}}.svg.
-//   Аватарки подготовлены в директории img.
-const avatar;
-// Для формирования текста комментария — message — вам необходимо
-//  взять одно или два случайных предложения из представленных ниже:
 
-const MESSAGE = [
+const MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра.',
@@ -66,9 +40,8 @@ const MESSAGE = [
   'Лица у людей на фотке перекошены, как будто их избивают.',
   'Как можно было поймать такой неудачный момент?!',
 ];
-//  Имена авторов также должны быть случайными. Набор имён для комментаторов
-//   составьте сами. Подставляйте случайное имя в поле name.
-const NAME = [
+
+const NAMES = [
   'DrZhuker',
   'XXXantonXXX',
   'Keks',
@@ -78,29 +51,73 @@ const NAME = [
   'SuperRazru$hitel2004',
   'Dina',
   'Gaika11',
+  'chepelev.official',
+  'love_ezhik',
+  'ninchpop',
+  'shevtsovdany',
+  'borovskihmargo',
+  'ma___nik',
+  'zigzag_88',
+  'rockwavefm',
+  'shornevd',
 ];
 
-// В файле main.js напишите необходимые функции для создания
-// массива из 25 сгенерированных объектов. Каждый объект массива —
-// описание фотографии, опубликованной пользователем.
+const getRandomInteger = (a, b) => {
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+};
 
-// Структура каждого объекта должна быть следующей:
+function createRandomIdFromRangeGenerator(min, max) {
+  const previousValues = [];
 
-const createDescriptionFoto = () => {
-  return {
-    id: '',
-    url: '',
-    description: '',
-    likes: '',
-    comments: [],
-  }
+  return function () {
+    let currentValue = getRandomInteger(min, max);
+    if (previousValues.length >= (max - min + 1)) {
+      return null;
+    }
+    while (previousValues.includes(currentValue)) {
+      currentValue = getRandomInteger(min, max);
+    }
+    previousValues.push(currentValue);
+    return currentValue;
+  };
 }
 
-const createComment = () => {
-  return {
-    id: '',
-    avatar: '',
-    message: '',
-    name: '',
+const generateCommentId = createRandomIdFromRangeGenerator(1, 1000);
+
+const createMessage = () => {
+  const messageLength = getRandomInteger(0, 1);
+  let message = MESSAGES[getRandomInteger(0, MESSAGES.length - 1)];
+  for (let i = 0; i < messageLength; i++) {
+    message += MESSAGES[getRandomInteger(0, MESSAGES.length - 1)];
   }
+  return message;
+};
+
+function createComment() {
+  return {
+    id: generateCommentId(),
+    avatar: `img/avatar${getRandomInteger(1, AVATAR_URL)}.svg`,
+    message: createMessage(),
+    name: NAMES[getRandomInteger(0, NAMES.length - 1)],
+  };
 }
+
+const comments = Array.from({ length: getRandomInteger(0, 30) }, createComment);
+
+const generatePhotoId = createRandomIdFromRangeGenerator(1, MAIN_ARRAY_LENGTH);
+
+function createDescriptionPhoto() {
+  const numberPhoto = generatePhotoId();
+  return {
+    id: numberPhoto,
+    url: `photos/${numberPhoto}.jpg`,
+    description: DESCRIPTIONS[numberPhoto - 1],
+    likes: getRandomInteger(15, 200),
+    comments: comments,
+  };
+}
+
+createDescriptionPhoto();
