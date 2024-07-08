@@ -16,7 +16,7 @@ const idCommentCount = {
 const messageCount = {
   MIN: 1,
   MAX: 2,
-}
+};
 
 const MESSAGES = [
   'Всё отлично!',
@@ -54,24 +54,20 @@ const createMessage = () => {
   const messageLength = getRandomInteger(messageCount.MIN, messageCount.MAX);
   let message = MESSAGES[getRandomInteger(0, MESSAGES.length - 1)];
   for (let i = messageCount.MIN; i < messageLength; i++) {
-    message += ' ' + MESSAGES[getRandomInteger(0, MESSAGES.length - 1)];
+    message += ` ${MESSAGES[getRandomInteger(0, MESSAGES.length - 1)]}`;
   }
   return message;
 };
 
 const generateCommentId = createRandomIdFromRangeGenerator(idCommentCount.MIN, idCommentCount.MAX);
 
-const createComment = () => {
-  return {
-    id: generateCommentId(),
-    avatar: `img/avatar${getRandomInteger(avatarCount.MIN, avatarCount.MAX)}.svg`,
-    message: createMessage(),
-    name: NAMES[getRandomInteger(0, NAMES.length - 1)],
-  };
-}
+const createComment = () => ({
+  id: generateCommentId(),
+  avatar: `img/avatar${getRandomInteger(avatarCount.MIN, avatarCount.MAX)}.svg`,
+  message: createMessage(),
+  name: NAMES[getRandomInteger(0, NAMES.length - 1)],
+});
 
-const getComments = () => {
-  return Array.from({ length: getRandomInteger(commentsCount.MIN, commentsCount.MAX) }, createComment);
-}
+const getComments = () => Array.from({ length: getRandomInteger(commentsCount.MIN, commentsCount.MAX) }, createComment);
 
 export { getComments };

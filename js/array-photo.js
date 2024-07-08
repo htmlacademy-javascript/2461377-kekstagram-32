@@ -1,6 +1,6 @@
 
 import { createRandomIdFromRangeGenerator, getRandomInteger } from './random-integer';
-import { getComments } from './comment-array';
+import { getComments } from './comment-array.js';
 
 const PHOTO_ARRAY_LENGTH = 25;
 const likesCount = {
