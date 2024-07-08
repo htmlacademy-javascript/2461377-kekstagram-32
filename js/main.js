@@ -1,4 +1,3 @@
-import './functions';
 import { getArrayPhoto } from './array-photo';
 
 // eslint-disable-next-line no-console
