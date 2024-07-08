@@ -96,6 +96,7 @@ function createComment() {
 function getComments() {
   return Array.from({ length: getRandomInteger(COMMENT_MIN_COUNT, COMMENT_MAX_COUNT) }, createComment);
 }
+
 const generatePhotoId = createRandomIdFromRangeGenerator(1, PHOTO_ARRAY_LENGTH);
 
 function createDescriptionPhoto() {
@@ -109,7 +110,10 @@ function createDescriptionPhoto() {
   };
 }
 
+function getArrayPhoto() {
+  return Array.from({ length: PHOTO_ARRAY_LENGTH }, createDescriptionPhoto);
+}
 
-const createArrayPhoto = Array.from({ length: PHOTO_ARRAY_LENGTH }, createDescriptionPhoto);
+const createArrayPhoto = getArrayPhoto();
 
 export { createArrayPhoto };
