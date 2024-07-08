@@ -93,8 +93,9 @@ function createComment() {
   };
 }
 
-const comments = Array.from({ length: getRandomInteger(COMMENT_MIN_COUNT, COMMENT_MAX_COUNT) }, createComment);
-
+function getComments() {
+  return Array.from({ length: getRandomInteger(COMMENT_MIN_COUNT, COMMENT_MAX_COUNT) }, createComment);
+}
 const generatePhotoId = createRandomIdFromRangeGenerator(1, PHOTO_ARRAY_LENGTH);
 
 function createDescriptionPhoto() {
@@ -104,7 +105,7 @@ function createDescriptionPhoto() {
     url: `photos/${numberPhoto}.jpg`,
     description: DESCRIPTIONS[numberPhoto - 1],
     likes: getRandomInteger(LIKES_MIN_COUNT, LIKES_MAX_COUNT),
-    comments: comments,
+    comments: getComments(),
   };
 }
 
