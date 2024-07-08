@@ -1,5 +1,5 @@
 import './functions';
-import { createArrayPhoto } from './create-array-photo';
+import { getArrayPhoto } from './array-photo';
 
 // eslint-disable-next-line no-console
-console.log(createArrayPhoto);
+console.log(getArrayPhoto());
