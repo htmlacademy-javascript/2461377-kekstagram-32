@@ -60,6 +60,7 @@ function getMinutes(time) {
   const minutes = minutesArray[0] * 60 + minutesArray[1] * 1;
   return minutes;
 }
+/* Вариант с переменными
 
 function checkTimeMeeting(workTimeStart, workTimeEnd, meetingTimeStart, meetingTimeLength) {
   const workMinutesStart = getMinutes(workTimeStart);
@@ -69,6 +70,18 @@ function checkTimeMeeting(workTimeStart, workTimeEnd, meetingTimeStart, meetingT
   if (meetingMinutesStart < workMinutesStart || meetingMinutesStart >= workMinutesEnd) {
     return false;
   } else if (workMinutesEnd < meetingMinutesStart + meetingTimeLength) {
+    return false;
+  }
+  return true;
+}
+  */
+
+/* Вариант с функциями */
+
+function checkTimeMeeting(workTimeStart, workTimeEnd, meetingTimeStart, meetingTimeLength) {
+  if (getMinutes(meetingTimeStart) < getMinutes(workTimeStart) || getMinutes(meetingTimeStart) >= getMinutes(workTimeEnd)) {
+    return false;
+  } else if (getMinutes(workTimeEnd) < getMinutes(meetingTimeStart) + meetingTimeLength) {
     return false;
   }
   return true;
