@@ -1,5 +1,5 @@
 
-import { createRandomIdFromRangeGenerator, getRandomInteger } from './random-integer';
+import { createRandomIdFromRangeGenerator, getRandomInteger } from './random-integer.js';
 import { getComments } from './comment-array.js';
 
 const PHOTO_ARRAY_LENGTH = 25;
