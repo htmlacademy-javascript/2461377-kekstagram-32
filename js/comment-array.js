@@ -1,4 +1,4 @@
-import { createRandomIdFromRangeGenerator, getRandomInteger } from './random-integer.js';
+import { createRandomIdFromRangeGenerator, getRandomInteger } from './util.js';
 
 
 const avatarCount = {
@@ -63,7 +63,7 @@ const generateCommentId = createRandomIdFromRangeGenerator(idCommentCount.MIN, i
 
 const createComment = () => ({
   id: generateCommentId(),
-  avatar: `img/avatar${getRandomInteger(avatarCount.MIN, avatarCount.MAX)}.svg`,
+  avatar: `/img/avatar-${getRandomInteger(avatarCount.MIN, avatarCount.MAX)}.svg`,
   message: createMessage(),
   name: NAMES[getRandomInteger(0, NAMES.length - 1)],
 });
