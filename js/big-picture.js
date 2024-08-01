@@ -7,7 +7,7 @@ const cancelButtonElement = bigPictureELement.querySelector('.big-picture__cance
 const commentElement = document.querySelector('#comment').content.querySelector('.social__comment');
 
 const createComment = ({ avatar, name, message }) => {
-  const comment = commentElement.clone(true);
+  const comment = commentElement.cloneNode(true);
 
   comment.querySelector('.social__picture').src = avatar;
   comment.querySelector('.social__picture').alt = name;

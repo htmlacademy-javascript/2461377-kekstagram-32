@@ -63,7 +63,7 @@ const generateCommentId = createRandomIdFromRangeGenerator(idCommentCount.MIN, i
 
 const createComment = () => ({
   id: generateCommentId(),
-  avatar: `img/avatar${getRandomInteger(avatarCount.MIN, avatarCount.MAX)}.svg`,
+  avatar: `/img/avatar-${getRandomInteger(avatarCount.MIN, avatarCount.MAX)}.svg`,
   message: createMessage(),
   name: NAMES[getRandomInteger(0, NAMES.length - 1)],
 });
