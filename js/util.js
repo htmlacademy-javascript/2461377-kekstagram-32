@@ -22,4 +22,12 @@ function createRandomIdFromRangeGenerator(min, max) {
   };
 }
 
-export { createRandomIdFromRangeGenerator, getRandomInteger };
+const createIdGenerator = () => {
+  let lastGenerator = 0;
+  return () => {
+    lastGenerator += 1;
+    return lastGenerator;
+  };
+};
+
+export { createRandomIdFromRangeGenerator, getRandomInteger, createIdGenerator };

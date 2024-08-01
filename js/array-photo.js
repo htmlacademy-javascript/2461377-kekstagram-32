@@ -1,5 +1,5 @@
 
-import { createRandomIdFromRangeGenerator, getRandomInteger } from './random-integer.js';
+import { getRandomInteger } from './util.js';
 import { getComments } from './comment-array.js';
 
 const PHOTO_ARRAY_LENGTH = 25;
@@ -36,19 +36,15 @@ const DESCRIPTIONS = [
   'Трофи в джунглях',
 ];
 
-const generatePhotoId = createRandomIdFromRangeGenerator(1, PHOTO_ARRAY_LENGTH);
+const createDescriptionPhoto = (index) => ({
+  id: index,
+  url: `photos/${index}.jpg`,
+  description: DESCRIPTIONS[index - 1],
+  likes: getRandomInteger(likesCount.MIN, likesCount.MAX),
+  comments: getComments(),
+});
 
-function createDescriptionPhoto() {
-  const numberPhoto = generatePhotoId();
-  return {
-    id: numberPhoto,
-    url: `photos/${numberPhoto}.jpg`,
-    description: DESCRIPTIONS[numberPhoto - 1],
-    likes: getRandomInteger(likesCount.MIN, likesCount.MAX),
-    comments: getComments(),
-  };
-}
 
-const getArrayPhoto = () => Array.from({ length: PHOTO_ARRAY_LENGTH }, createDescriptionPhoto);
+const getArrayPhoto = () => Array.from({ length: PHOTO_ARRAY_LENGTH }, (_, picrureIndex) => createDescriptionPhoto(picrureIndex + 1));
 
 export { getArrayPhoto };

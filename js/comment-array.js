@@ -1,4 +1,4 @@
-import { createRandomIdFromRangeGenerator, getRandomInteger } from './random-integer.js';
+import { createRandomIdFromRangeGenerator, getRandomInteger } from './util.js';
 
 
 const avatarCount = {
