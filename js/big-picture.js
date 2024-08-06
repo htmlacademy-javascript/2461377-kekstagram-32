@@ -1,7 +1,6 @@
 const COMMENTS_PORTION = 5;
 
 const bigPictureELement = document.querySelector('.big-picture');
-// const commentCountElement = bigPictureELement.querySelector('.social__comment-count');
 const commentShownCountElement = bigPictureELement.querySelector('.social__comment-shown-count');
 const commentTotalCountElement = bigPictureELement.querySelector('.social__comment-total-count');
 const commentListElement = bigPictureELement.querySelector('.social__comments');
