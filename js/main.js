@@ -6,9 +6,10 @@
 // import { init, reset} from './effect.js';
 import { renderGallery } from './gallery.js';
 import { getData, sentData } from './api.js';
-import { showAlert } from './util.js';
+import { showAlert, debounce } from './util.js';
 import { setOnFormSubmit, hideModal } from './form.js';
 import { showSuccessMessage, showErrorMessage } from './message.js';
+import { init as initFilter, getFilteredPictures } from './filter.js';
 
 setOnFormSubmit(async (data) => {
   try {
@@ -22,7 +23,9 @@ setOnFormSubmit(async (data) => {
 
 try {
   const data = await getData();
-  renderGallery(data);
+  const debouncedRenderGallery = debounce(renderGallery);
+  initFilter(data, debouncedRenderGallery);
+  renderGallery(getFilteredPictures());
 } catch {
   showAlert();
 }

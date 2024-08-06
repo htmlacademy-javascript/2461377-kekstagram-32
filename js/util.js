@@ -11,7 +11,15 @@ const showAlert = () => {
   }, ALERT_SHOW_TIME);
 };
 
-export { showAlert };
+const debounce = (callback, timeoutDelay = 500) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+export { showAlert, debounce };
 // const getRandomInteger = (a, b) => {
 //   const lower = Math.ceil(Math.min(a, b));
 //   const upper = Math.floor(Math.max(a, b));
