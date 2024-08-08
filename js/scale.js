@@ -1,6 +1,6 @@
 const SCALE_STEP = 25;
 const DEFAULT_SCALE = 100;
-const scale = {
+const Scale = {
   MIN: 25,
   MAX: 100,
 };
@@ -17,11 +17,11 @@ const scaleImage = (value) => {
 };
 
 const onSmallerButtonClick = () => {
-  scaleImage(Math.max(parseInt(scaleInputElement.value, 10) - SCALE_STEP, scale.MIN)
+  scaleImage(Math.max(parseInt(scaleInputElement.value, 10) - SCALE_STEP, Scale.MIN)
   );
 };
 const onBiggerButtonClick = () => {
-  scaleImage(Math.min(parseInt(scaleInputElement.value, 10) + SCALE_STEP, scale.MAX)
+  scaleImage(Math.min(parseInt(scaleInputElement.value, 10) + SCALE_STEP, Scale.MAX)
   );
 };
 
